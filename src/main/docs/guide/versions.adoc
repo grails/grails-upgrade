@@ -1,0 +1,23 @@
+Grails Profiles encapsulate the project commands, templates and plugins that are designed to work for a given profile. When you don't
+specify a profile, the `web` profile is used.
+
+The easiest way to see changes made to fresh new app for a given profile between Grails versions is to use the next
+Github Repositories to generate a diff.
+
+|===
+|Application Profile
+|https://github.com/grails-profiles-versions/web-versions[web]
+|https://github.com/grails-profiles-versions/rest-api-versions[rest-api]
+|https://github.com/grails-profiles-versions/angularjs-versions[angularjs]
+|https://github.com/grails-profiles-versions/angular-versions[angular]
+|https://github.com/grails-profiles-versions/react-versions[react]
+|https://github.com/grails-profiles-versions/webpack-versions[webpack]
+|https://github.com/grails-profiles-versions/web-jboss7-versions[web-jboss7-versions]
+|===
+
+|===
+|Plugin Profile
+|https://github.com/grails-profiles-versions/plugin-versions[plugin]
+|https://github.com/grails-profiles-versions/rest-api-plugin-versions[rest-api-plugin]
+|https://github.com/grails-profiles-versions/web-plugin-versions[web-plugin]
+|===

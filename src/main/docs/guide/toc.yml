@@ -1,7 +1,15 @@
-introduction: Introduction
-usage: Usage
-tests: Tests
-profilename: Profile Name
-guides: Guides, Quickcast and Blog Posts
-profileinfo: Profile Info
-
+versions:
+  title: Comparing Versions
+upgrading:
+  title: Upgrading to Grails 3.3
+  upgrading32x:
+    title: Upgrading from Grails 3.2
+  upgrading31x:
+    title: Upgrading from Grails 3.1
+  upgrading3x:
+    title: Upgrading from Grails 3.0
+  upgrading2x:
+    title: Upgrading from Grails 2.x
+    upgradingPlugins: Upgrading Plugins
+    upgradingApps: Upgrading Applications
+    upgradingGeneral: General Changes to be aware of when migrating apps
