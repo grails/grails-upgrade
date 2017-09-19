@@ -1,2 +1,0 @@
-https://github.com/grails/grails-core/releases[Release notes] are published to Github.
-Always read them, when upgrading your Grails application to the latest version.
