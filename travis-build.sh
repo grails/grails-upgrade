@@ -12,7 +12,7 @@ if [[ $TRAVIS_PULL_REQUEST == 'false' ]]; then
     git config --global credential.helper "store --file=~/.git-credentials"
     echo "https://$GH_TOKEN:@github.com" > ~/.git-credentials
 
-    git clone https://${GH_TOKEN}@github.com/grails-profiles/angular.git -b gh-pages gh-pages --single-branch > /dev/null
+    git clone https://${GH_TOKEN}@github.com/grails-profiles/grails-upgrade.git -b gh-pages gh-pages --single-branch > /dev/null
     cd gh-pages
 
     rm -rf latest
@@ -20,7 +20,7 @@ if [[ $TRAVIS_PULL_REQUEST == 'false' ]]; then
     cp -r ../build/docs/. ./latest/
     git add latest/*
 
-    git commit -a -m "Updating Angular Profile Docs for Travis build: https://travis-ci.org/$TRAVIS_REPO_SLUG/builds/$TRAVIS_BUILD_ID"
+    git commit -a -m "Updating grails-upgrade Profile Docs for Travis build: https://travis-ci.org/$TRAVIS_REPO_SLUG/builds/$TRAVIS_BUILD_ID"
     git push origin HEAD
 
     cd ..
