@@ -1,0 +1,341 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+    <title>2.1 Upgrading to Grails 4 1.0.0.BUILD-SNAPSHOT</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <link rel="stylesheet" href="../css/main.css" type="text/css" media="screen, print" title="Style" charset="utf-8"/>
+    <link rel="stylesheet" href="../css/pdf.css" type="text/css" media="print" title="PDF" charset="utf-8"/>
+    <script type="text/javascript">
+function addJsClass() {
+    var classes = document.body.className.split(" ");
+    classes.push("js");
+    document.body.className = classes.join(" ");
+}
+    </script>
+</head>
+
+<body class="body" onload="addJsClass();">
+<div id="navigation">
+    <div class="navTitle">
+        
+        Upgrading Grails Applications
+    </div>
+    <div class="navLinks">
+        <ul>
+            <li>
+                <div id="nav-summary" onmouseover="toggleNavSummary(false)" onmouseout="toggleNavSummary(true)">
+                    <a href="../../guide/index.html" class="button">Table of contents</a>
+
+                    <div id="nav-summary-childs" style="display:none;">
+                        
+                        <div class="toc-item" style="margin-left:0"><a href="../../guide/versions.html"><strong>1</strong><span>Comparing Versions</span></a>
+                        </div>
+                        
+                        <div class="toc-item" style="margin-left:0"><a href="../../guide/upgrading.html"><strong>2</strong><span>Upgrading</span></a>
+                        </div>
+                        
+                    </div>
+                </div>
+            </li>
+            <li class="separator selected">
+                <a id="ref-button" onclick="localToggle(); return false;" href="#">Quick Reference</a>
+            </li>
+        </ul>
+    </div>
+
+
+</div>
+
+<table id="colset" border="0" cellpadding="0" cellspacing="0">
+    <tr>
+        <td id="col1">
+            <div id="main" class="corner-all">
+
+                
+                    <div class="toc-item prev-left"><a href="../../guide/versions.html">&lt;&lt; <strong>1</strong><span>Comparing Versions</span></a></div>
+                
+
+                <span id='toggle-col1' class="toggle">(<a href="#" onclick="localToggle(); return false;">Quick Reference</a>)</span>
+
+                
+
+
+                <div class="project">
+                    <h1>2.1 Upgrading to Grails 4</h1>
+
+                    <p><strong>Version:</strong> 1.0.0.BUILD-SNAPSHOT</p>
+                </div>
+
+                
+
+                
+
+<h2 id="upgradingTo4x">2.1 Upgrading to Grails 4</h2>
+
+<div class='contribute-btn'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/grails/grails-upgrade/edit/master/src/main/docs/guide/upgrading/upgradingTo4x.adoc"'>
+        <i class='fa fa-pencil-square-o'></i> Improve this doc
+    </button>
+</div>
+
+
+<div class="paragraph">
+<p>The next classes, which were deprecated, have been removed in Grails 4. Please, check the next list to find a suitable replacement:</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Removed Class</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Alternative</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>grails.util.BuildScope</code></p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>grails.transaction.GrailsTransactionTemplate</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>grails.gorm.transactions.GrailsTransactionTemplate</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>org.grails.transaction.transform.RollbackTransform</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>org.grails.datastore.gorm.transactions.transform.RollbackTransform</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>grails.transaction.NotTransactional</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>grails.gorm.transactions.NotTransactional</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>grails.transaction.Rollback</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>grails.gorm.transactions.Rollback</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>grails.transaction.Transactional</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>grails.gorm.transactions.Transactional</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>org.grails.config.FlatConfig</code></p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>org.grails.core.metaclass.MetaClassEnhancer</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Use traits instead.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>org.grails.core.util.ClassPropertyFetcher</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>org.grails.datastore.mapping.reflect.ClassPropertyFetcher</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>org.grails.transaction.transform.TransactionalTransform</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>org.grails.datastore.gorm.transactions.transform.TransactionalTransform</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>grails.core.ComponentCapableDomainClass</code></p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>grails.core.GrailsDomainClassProperty</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Use the <code>org.grails.datastore.mapping.model.MappingContext</code> API instead</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>org.grails.core.DefaultGrailsDomainClassProperty</code></p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>org.grails.core.MetaGrailsDomainClassProperty</code></p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>org.grails.core.support.GrailsDomainConfigurationUtil</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Use the <code>org.grails.datastore.mapping.model.MappingContext</code> and <code>org.grails.datastore.mapping.model.MappingFactory</code> APIs instead</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>org.grails.plugins.domain.DomainClassPluginSupport</code></p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>org.grails.plugins.domain.support.GormApiSupport</code></p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>org.grails.plugins.domain.support.GrailsDomainClassCleaner</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Handled by <code>org.grails.datastore.mapping.model.MappingContext</code> now</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>grails.validation.AbstractConstraint</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Use <code>org.grails.datastore.gorm.validation.constraints.AbstractConstraint</code> instead</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>grails.validation.AbstractVetoingConstraint</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"> <code>org.grails.datastore.gorm.validation.constraints.AbstractVetoingConstraint</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>grails.validation.CascadingValidator</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>grails.gorm.validation.CascadingValidator</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>grails.validation.ConstrainedProperty</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>grails.gorm.validation.ConstrainedProperty</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>grails.validation.Constraint</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>grails.gorm.validation.Constraint</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>grails.validation.ConstraintFactory</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>org.grails.datastore.gorm.validation.constraints.factory.ConstraintFactory</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>grails.validation.VetoingConstraint</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>grails.gorm.validation.VetoingConstraint</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>grails.validation.ConstraintException</code></p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>org.grails.validation.BlankConstraint</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>org.grails.datastore.gorm.validation.constraints.BlankConstraint</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>org.grails.validation.ConstrainedPropertyBuilder</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>org.grails.datastore.gorm.validation.constraints.builder.ConstrainedPropertyBuilder</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>org.grails.validation.ConstraintDelegate</code></p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>org.grails.validation.ConstraintsEvaluatorFactoryBean</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>org.grails.datastore.gorm.validation.constraints.eval.ConstraintsEvaluator</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>org.grails.validation.CreditCardConstraint</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>org.grails.datastore.gorm.validation.constraints.CreditCardConstraint</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>org.grails.validation.DefaultConstraintEvaluator</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>org.grails.datastore.gorm.validation.constraints.eval.DefaultConstraintEvaluator</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>org.grails.validation.DomainClassPropertyComparator</code></p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>org.grails.validation.EmailConstraint</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>org.grails.datastore.gorm.validation.constraints.EmailConstraint</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>org.grails.validation.GrailsDomainClassValidator</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>grails.gorm.validation.PersistentEntityValidator</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>org.grails.validation.InListConstraint</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>org.grails.datastore.gorm.validation.constraints.InListConstraint</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>org.grails.validation.MatchesConstraint</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>org.grails.datastore.gorm.validation.constraints.MatchesConstraint</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>org.grails.validation.MaxConstraint</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>org.grails.datastore.gorm.validation.constraints.MaxConstraint</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>org.grails.validation.MaxSizeConstraint</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>org.grails.datastore.gorm.validation.constraints.MaxSizeConstraint</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>org.grails.validation.MinConstraint</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>org.grails.datastore.gorm.validation.constraints.MinConstraint</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>org.grails.validation.MinSizeConstraint</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>org.grails.datastore.gorm.validation.constraints.MinSizeConstraint</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>org.grails.validation.NotEqualConstraint</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>org.grails.datastore.gorm.validation.constraints.NotEqualConstraint</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>org.grails.validation.NullableConstraint</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>org.grails.datastore.gorm.validation.constraints.NullableConstraint</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>org.grails.validation.RangeConstraint</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>org.grails.datastore.gorm.validation.constraints.RangeConstraint</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>org.grails.validation.ScaleConstraint</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>org.grails.datastore.gorm.validation.constraints.ScaleConstraint</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>org.grails.validation.SizeConstraint</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>org.grails.datastore.gorm.validation.constraints.SizeConstraint</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>org.grails.validation.UrlConstraint</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>org.grails.datastore.gorm.validation.constraints.UrlConstraint</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>org.grails.validation.ValidatorConstraint</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>org.grails.datastore.gorm.validation.constraints.ValidatorConstraint</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>org.grails.validation.routines.DomainValidator</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Replaced by newer version of commons-validation</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>org.grails.validation.routines.InetAddressValidator</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Replaced by newer version of commons-validation</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>org.grails.validation.routines.RegexValidator</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Replaced by newer version of commons-validation</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>org.grails.validation.routines.ResultPair</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Replaced by newer version of commons-validation</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>org.grails.validation.routines.UrlValidator</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Replaced by newer version of commons-validation</p></td>
+</tr>
+</tbody>
+</table>
+
+
+                <div style="clear:both;margin-top:15px;"></div>
+                
+                    <div class="toc-item prev-left"><a href="../../guide/versions.html">&lt;&lt; <strong>1</strong><span>Comparing Versions</span></a></div>
+                
+                <div style="clear:both"></div>
+            </div>
+        </td>
+        <td id="col2">
+            <div class="local clearfix">
+                <div class="local-title">
+                    <a href="../../guide/index.html" target="mainFrame">Quick Reference</a>
+                    <span class="toggle">(<a href="#" onclick="localToggle(); return false;">hide</a>)</span>
+                </div>
+                <div class="menu">
+                    
+                </div>
+            </div>
+        </td>
+    </tr>
+</table>
+
+<div id="footer">
+    
+    
+</div>
+
+<script type="text/javascript" src="../js/docs.js"></script>
+
+</body>
+</html>
