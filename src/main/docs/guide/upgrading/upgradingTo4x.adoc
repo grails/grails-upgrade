@@ -1,0 +1,58 @@
+The next classes, which were deprecated, have been removed in Grails 4. Please, check the next list to find a suitable replacement:
+
+|===
+| Removed Class | Alternative
+| `grails.util.BuildScope` |
+| `grails.transaction.GrailsTransactionTemplate` | `grails.gorm.transactions.GrailsTransactionTemplate`
+| `org.grails.transaction.transform.RollbackTransform` | `org.grails.datastore.gorm.transactions.transform.RollbackTransform`
+| `grails.transaction.NotTransactional` | `grails.gorm.transactions.NotTransactional`
+| `grails.transaction.Rollback` | `grails.gorm.transactions.Rollback`
+| `grails.transaction.Transactional` | `grails.gorm.transactions.Transactional`
+| `org.grails.config.FlatConfig` |
+| `org.grails.core.metaclass.MetaClassEnhancer` | Use traits instead.
+| `org.grails.core.util.ClassPropertyFetcher` | `org.grails.datastore.mapping.reflect.ClassPropertyFetcher`
+| `org.grails.transaction.transform.TransactionalTransform` | `org.grails.datastore.gorm.transactions.transform.TransactionalTransform`
+| `grails.core.ComponentCapableDomainClass` |
+| `grails.core.GrailsDomainClassProperty` | Use the `org.grails.datastore.mapping.model.MappingContext` API instead
+| `org.grails.core.DefaultGrailsDomainClassProperty` |
+| `org.grails.core.MetaGrailsDomainClassProperty` |
+| `org.grails.core.support.GrailsDomainConfigurationUtil` | Use the `org.grails.datastore.mapping.model.MappingContext` and `org.grails.datastore.mapping.model.MappingFactory` APIs instead
+| `org.grails.plugins.domain.DomainClassPluginSupport` |
+| `org.grails.plugins.domain.support.GormApiSupport` |
+| `org.grails.plugins.domain.support.GrailsDomainClassCleaner` | Handled by `org.grails.datastore.mapping.model.MappingContext` now
+| `grails.validation.AbstractConstraint` | Use `org.grails.datastore.gorm.validation.constraints.AbstractConstraint` instead
+| `grails.validation.AbstractVetoingConstraint` | `org.grails.datastore.gorm.validation.constraints.AbstractVetoingConstraint`
+| `grails.validation.CascadingValidator` | `grails.gorm.validation.CascadingValidator`
+| `grails.validation.ConstrainedProperty` | `grails.gorm.validation.ConstrainedProperty`
+| `grails.validation.Constraint` | `grails.gorm.validation.Constraint`
+| `grails.validation.ConstraintFactory` | `org.grails.datastore.gorm.validation.constraints.factory.ConstraintFactory`
+| `grails.validation.VetoingConstraint` | `grails.gorm.validation.VetoingConstraint`
+| `grails.validation.ConstraintException` |
+| `org.grails.validation.BlankConstraint` | `org.grails.datastore.gorm.validation.constraints.BlankConstraint`
+| `org.grails.validation.ConstrainedPropertyBuilder` | `org.grails.datastore.gorm.validation.constraints.builder.ConstrainedPropertyBuilder`
+| `org.grails.validation.ConstraintDelegate` |
+| `org.grails.validation.ConstraintsEvaluatorFactoryBean` | `org.grails.datastore.gorm.validation.constraints.eval.ConstraintsEvaluator`
+| `org.grails.validation.CreditCardConstraint` | `org.grails.datastore.gorm.validation.constraints.CreditCardConstraint`
+| `org.grails.validation.DefaultConstraintEvaluator` | `org.grails.datastore.gorm.validation.constraints.eval.DefaultConstraintEvaluator`
+| `org.grails.validation.DomainClassPropertyComparator` |
+| `org.grails.validation.EmailConstraint` | `org.grails.datastore.gorm.validation.constraints.EmailConstraint`
+| `org.grails.validation.GrailsDomainClassValidator` | `grails.gorm.validation.PersistentEntityValidator`
+| `org.grails.validation.InListConstraint` | `org.grails.datastore.gorm.validation.constraints.InListConstraint`
+| `org.grails.validation.MatchesConstraint` | `org.grails.datastore.gorm.validation.constraints.MatchesConstraint`
+| `org.grails.validation.MaxConstraint` | `org.grails.datastore.gorm.validation.constraints.MaxConstraint`
+| `org.grails.validation.MaxSizeConstraint` | `org.grails.datastore.gorm.validation.constraints.MaxSizeConstraint`
+| `org.grails.validation.MinConstraint` | `org.grails.datastore.gorm.validation.constraints.MinConstraint`
+| `org.grails.validation.MinSizeConstraint` | `org.grails.datastore.gorm.validation.constraints.MinSizeConstraint`
+| `org.grails.validation.NotEqualConstraint` | `org.grails.datastore.gorm.validation.constraints.NotEqualConstraint`
+| `org.grails.validation.NullableConstraint` | `org.grails.datastore.gorm.validation.constraints.NullableConstraint`
+| `org.grails.validation.RangeConstraint` | `org.grails.datastore.gorm.validation.constraints.RangeConstraint`
+| `org.grails.validation.ScaleConstraint` | `org.grails.datastore.gorm.validation.constraints.ScaleConstraint`
+| `org.grails.validation.SizeConstraint` | `org.grails.datastore.gorm.validation.constraints.SizeConstraint`
+| `org.grails.validation.UrlConstraint` | `org.grails.datastore.gorm.validation.constraints.UrlConstraint`
+| `org.grails.validation.ValidatorConstraint` | `org.grails.datastore.gorm.validation.constraints.ValidatorConstraint`
+| `org.grails.validation.routines.DomainValidator` | Replaced by newer version of commons-validation
+| `org.grails.validation.routines.InetAddressValidator` | Replaced by newer version of commons-validation
+| `org.grails.validation.routines.RegexValidator` | Replaced by newer version of commons-validation
+| `org.grails.validation.routines.ResultPair` | Replaced by newer version of commons-validation
+| `org.grails.validation.routines.UrlValidator` | Replaced by newer version of commons-validation
+|===

@@ -1,7 +1,11 @@
 versions:
   title: Comparing Versions
 upgrading:
-  title: Upgrading to Grails 3.3
+  title: Upgrading
+  upgradingTo4x:
+    title: Upgrading to Grails 4
+  upgradingTo33x:
+    title: Upgrading to Grails 3.3
   upgrading32x:
     title: Upgrading from Grails 3.2
   upgrading31x:
