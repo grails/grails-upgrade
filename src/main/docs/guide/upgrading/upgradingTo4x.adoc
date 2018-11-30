@@ -1,3 +1,288 @@
+WARNING: Grails 4 is still under development.
+
+### Bump up Grails Version
+
+You will need to upgrade your Grails version defined in `gradle.properties`.
+
+Grails 3 app's `gradle.properties`
+
+[source, properties]
+.gradle.properties
+----
+...
+grailsVersion=3.3.8
+...
+----
+
+Grails 4 app's `gradle.properties`
+
+[source, properties]
+.gradle.properties
+----
+...
+grailsVersion=4.0.0.BUILD-SNAPSHOT
+...
+----
+
+### Bump up GORM Version
+
+If you were using http://gorm.grails.org[GORM], you will need to update the version defined in `gradle.properties`.
+
+Grails 3 app's `gradle.properties`
+
+[source, properties]
+.gradle.properties
+----
+...
+gormVersion=6.1.10.RELEASE
+...
+----
+
+Grails 4 app's `gradle.properties`
+
+[source, properties]
+.gradle.properties
+----
+...
+gormVersion=7.0.0.BUILD-SNAPSHOT
+...
+----
+
+### Spring Boot Gradle Plugin Changes
+
+Grails 4 is built on top of Spring Boot 2.1. Grails 3 apps were built on top of Spring Boot 1.x.
+
+Your Grails 3 app's `build.gradle` may have such configuration:
+
+[source, groovy]
+.buid.gradle
+----
+bootRun {
+    addResources = true
+    ...
+}
+----
+
+Grails 4 apps are built on top of Spring Boot 2.1. Starting from Spring Boot 2.0, the `addResources` property no longer exists. Instead, you need to set the sourceResources property to the source set that you want to use. Typically that’s `sourceSets.main`. This is described in the https://docs.spring.io/spring-boot/docs/2.0.0.M3//gradle-plugin/reference/html/#running-your-application-reloading-resources[Spring Boot Gradle plugin’s documentation].
+
+Your Grails 4 app's `build.gradle` can be configured:
+
+[source, groovy]
+.buid.gradle
+----
+bootRun {
+	sourceResources sourceSets.main
+    ...
+}
+----
+
+### Upgrading to Gradle 5
+
+Grails 3 apps by default used http://gradle.org[Gradle] 3.5. Grails 4 apps use Gradle 5.
+
+Often, to upgrade to Gradle 5 you will just need to modify:
+
+[source, groovy]
+.gradle/wrapper/gradle-wrapper.properties
+----
+#Wed Sep 06 18:32:41 CEST 2017
+distributionBase=GRADLE_USER_HOME
+distributionPath=wrapper/dists
+zipStoreBase=GRADLE_USER_HOME
+zipStorePath=wrapper/dists
+distributionUrl=https\://services.gradle.org/distributions/gradle-3.5-all.zip // <1>
+----
+
+<1> Gradle version 3.5
+
+to:
+
+[source, groovy]
+.gradle/wrapper/gradle-wrapper.properties
+----
+#Wed Sep 06 18:32:41 CEST 2017
+distributionBase=GRADLE_USER_HOME
+distributionPath=wrapper/dists
+zipStoreBase=GRADLE_USER_HOME
+zipStorePath=wrapper/dists
+distributionUrl=https\://services.gradle.org/distributions/gradle-5.0-all.zip // <1>
+----
+
+<1> Gradle version 5.0
+
+If you customized your app's build, other migrations may be necessary. Please check
+https://docs.gradle.org/current/userguide/upgrading_version_4.html[Gradle Upgrading your build] documentation.
+
+
+### Upgrade Hibernate
+
+If you were using GORM for Hibernate implementation in your Grails 3 app, you will need to upgrade to Hibernate 5.3.
+
+A Grails 3 `build.gradle` such as:
+
+[source, groovy]
+.build.gradle
+----
+dependencies {
+...
+  compile "org.grails.plugins:hibernate5"
+  compile "org.hibernate:hibernate-core:5.1.5.Final"
+}
+----
+
+will be in Grails 4:
+
+[source, groovy]
+.build.gradle
+----
+dependencies {
+...
+  compile "org.grails.plugins:hibernate5"
+  compile "org.hibernate:hibernate-core:5.3.7.Final"
+}
+----
+
+
+
+### Migrating to Geb 2.2
+
+Geb 1.1.x (a JDK 1.7 compatible version) was the version shipped by default with Grails 3. Grails 4 is no longer compatible with Java 1.7. You should migrate to Geb 2.2.
+
+In Grails 3, if your build.gradle looks like:
+
+[source, groovy]
+.build.gradle
+----
+dependencies {
+ testCompile "org.grails.plugins:geb:1.1.2"
+ testRuntime "org.seleniumhq.selenium:selenium-htmlunit-driver:2.47.1"
+ testRuntime "net.sourceforge.htmlunit:htmlunit:2.18"
+}
+----
+
+In Grails 4, you should replace it with:
+
+[source, groovy]
+.build.gradle
+----
+buildscript {
+    repositories {
+       ...
+    }
+    dependencies {
+        ...
+        classpath "gradle.plugin.com.energizedwork.webdriver-binaries:webdriver-binaries-gradle-plugin:$webdriverBinariesVersion" // <1>
+    }
+}
+...
+..
+
+repositories {
+  ...
+}
+
+apply plugin:"idea"
+...
+...
+apply plugin:"com.energizedwork.webdriver-binaries" // <1>
+
+
+dependencies {
+...
+    testCompile "org.grails.plugins:geb" // <4>
+    testRuntime "org.seleniumhq.selenium:selenium-chrome-driver:$seleniumVersion"  // <5>
+    testRuntime "org.seleniumhq.selenium:selenium-firefox-driver:$seleniumVersion" // <5>
+    testRuntime "org.seleniumhq.selenium:selenium-safari-driver:$seleniumSafariDriverVersion" // <5>
+
+    testCompile "org.seleniumhq.selenium:selenium-remote-driver:$seleniumVersion" // <5>
+    testCompile "org.seleniumhq.selenium:selenium-api:$seleniumVersion" // <5>
+    testCompile "org.seleniumhq.selenium:selenium-support:$seleniumVersion" // <5>
+}
+
+webdriverBinaries {
+    chromedriver "$chromeDriverVersion" // <2>
+    geckodriver "$geckodriverVersion" // <3>
+}
+
+tasks.withType(Test) {
+    systemProperty "geb.env", System.getProperty('geb.env')
+    systemProperty "geb.build.reportsDir", reporting.file("geb/integrationTest")
+    systemProperty "webdriver.chrome.driver", System.getProperty('webdriver.chrome.driver')
+    systemProperty "webdriver.gecko.driver", System.getProperty('webdriver.gecko.driver')
+}
+----
+
+[source,properties]
+.gradle.properties
+----
+gebVersion=2.2
+seleniumVersion=3.12.0
+webdriverBinariesVersion=1.4
+hibernateCoreVersion=5.1.5.Final
+chromeDriverVersion=2.44 // <2>
+geckodriverVersion=0.23.0 // <3>
+seleniumSafariDriverVersion=3.14.0
+----
+
+<1> Includes https://plugins.gradle.org/plugin/com.energizedwork.webdriver-binaries[Webdriver binaries Gradle plugin].
+<2> Set the appropriate http://chromedriver.chromium.org[Webdriver for Chrome version].
+<3> Set the appropriate https://github.com/mozilla/geckodriver/releases[Webdriver for Firefox version].
+<4> Includes the https://github.com/grails3-plugins/geb[Grails Geb Plugin dependency] which has a transitive dependency to `geb-spock`. This is the dependency necessary to work with http://www.gebish.org[Geb] and Spock.
+<5> Selenium and different driver dependencies.
+
+Create also a http://www.gebish.org/manual/current/#configuration[Geb Configuration] file at `src/integration-test/resources/GebConfig.groovy`.
+
+[source, groovy]
+.src/integration-test/resources/GebConfig.groovy
+----
+import org.openqa.selenium.chrome.ChromeDriver
+import org.openqa.selenium.chrome.ChromeOptions
+import org.openqa.selenium.firefox.FirefoxDriver
+import org.openqa.selenium.firefox.FirefoxOptions
+import org.openqa.selenium.safari.SafariDriver
+
+environments {
+
+    // You need to configure in Safari -> Develop -> Allowed Remote Automation
+    safari {
+        driver = { new SafariDriver() }
+    }
+
+    // run via “./gradlew -Dgeb.env=chrome iT”
+    chrome {
+        driver = { new ChromeDriver() }
+    }
+
+    // run via “./gradlew -Dgeb.env=chromeHeadless iT”
+    chromeHeadless {
+        driver = {
+            ChromeOptions o = new ChromeOptions()
+            o.addArguments('headless')
+            new ChromeDriver(o)
+        }
+    }
+
+    // run via “./gradlew -Dgeb.env=firefoxHeadless iT”
+    firefoxHeadless {
+        driver = {
+            FirefoxOptions o = new FirefoxOptions()
+            o.addArguments('-headless')
+            new FirefoxDriver(o)
+        }
+    }
+
+    // run via “./gradlew -Dgeb.env=firefox iT”
+    firefox {
+        driver = { new FirefoxDriver() }
+    }
+}
+----
+
+
+
+## Deprecated classes
+
+
 The next classes, which were deprecated, have been removed in Grails 4. Please, check the next list to find a suitable replacement:
 
 |===
