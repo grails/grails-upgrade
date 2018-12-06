@@ -287,6 +287,8 @@ The next classes, which were deprecated, have been removed in Grails 4. Please, 
 
 |===
 | Removed Class | Alternative
+| `org.grails.datastore.gorm.validation.constraints.UniqueConstraint` |
+`org.grails.datastore.gorm.validation.constraints.builtin.UniqueConstraint`
 | `grails.util.BuildScope` |
 | `grails.transaction.GrailsTransactionTemplate` | `grails.gorm.transactions.GrailsTransactionTemplate`
 | `org.grails.transaction.transform.RollbackTransform` | `org.grails.datastore.gorm.transactions.transform.RollbackTransform`
