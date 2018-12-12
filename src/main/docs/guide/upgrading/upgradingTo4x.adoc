@@ -48,6 +48,16 @@ gormVersion=7.0.0.BUILD-SNAPSHOT
 ...
 ----
 
+### Spring 5 and Spring Boot 2.1
+
+Grails 4.0 is built on Spring 5 and Spring Boot 2.1. See the https://github.com/spring-projects/spring-boot/wiki/Spring-Boot-2.0-Migration-Guide[migration guide] and https://github.com/spring-projects/spring-boot/wiki/Spring-Boot-2.1-Release-Notes[release notes] if you are using Spring specific features.
+
+### Hibernate 5.3 and GORM 7.x
+
+Grails 4.x supports a minimum version of Hibernate 5.3 and GORM 7.x. Several changes have been made to GORM to support the newer version of Hibernate and simplify GORM itself.
+
+The details of these changes are covered in the http://gorm.grails.org/7.0.x/hibernate/manual/index.html#upgradeNotes[GORM upgrade documentation].
+
 ### Spring Boot Gradle Plugin Changes
 
 Grails 4 is built on top of Spring Boot 2.1. Grails 3 apps were built on top of Spring Boot 1.x.
