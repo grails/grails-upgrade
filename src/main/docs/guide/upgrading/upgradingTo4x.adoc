@@ -90,35 +90,12 @@ bootRun {
 
 Grails 3 apps by default used http://gradle.org[Gradle] 3.5. Grails 4 apps use Gradle 5.
 
-Often, to upgrade to Gradle 5 you will just need to modify:
+To upgrade to Gradle 5 execute: 
 
-[source, groovy]
-.gradle/wrapper/gradle-wrapper.properties
+[source, bash]
 ----
-#Wed Sep 06 18:32:41 CEST 2017
-distributionBase=GRADLE_USER_HOME
-distributionPath=wrapper/dists
-zipStoreBase=GRADLE_USER_HOME
-zipStorePath=wrapper/dists
-distributionUrl=https\://services.gradle.org/distributions/gradle-3.5-all.zip // <1>
+./gradlew wrapper --gradle-version 5.0
 ----
-
-<1> Gradle version 3.5
-
-to:
-
-[source, groovy]
-.gradle/wrapper/gradle-wrapper.properties
-----
-#Wed Sep 06 18:32:41 CEST 2017
-distributionBase=GRADLE_USER_HOME
-distributionPath=wrapper/dists
-zipStoreBase=GRADLE_USER_HOME
-zipStorePath=wrapper/dists
-distributionUrl=https\://services.gradle.org/distributions/gradle-5.0-all.zip // <1>
-----
-
-<1> Gradle version 5.0
 
 If you customized your app's build, other migrations may be necessary. Please check
 https://docs.gradle.org/current/userguide/upgrading_version_4.html[Gradle Upgrading your build] documentation.
