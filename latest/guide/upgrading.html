@@ -246,48 +246,12 @@ gormVersion=7.0.0.BUILD-SNAPSHOT
 <p>Grails 3 apps by default used <a href="http://gradle.org">Gradle</a> 3.5. Grails 4 apps use Gradle 5.</p>
 </div>
 <div class="paragraph">
-<p>Often, to upgrade to Gradle 5 you will just need to modify:</p>
+<p>To upgrade to Gradle 5 execute:</p>
 </div>
 <div class="listingblock">
-<div class="title">gradle/wrapper/gradle-wrapper.properties</div>
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="groovy"><span class="error">#</span>Wed Sep <span class="octal">06</span> <span class="integer">18</span>:<span class="integer">32</span>:<span class="integer">41</span> CEST <span class="integer">2017</span>
-distributionBase=GRADLE_USER_HOME
-distributionPath=wrapper/dists
-zipStoreBase=GRADLE_USER_HOME
-zipStorePath=wrapper/dists
-distributionUrl=https<span class="error">\</span>:<span class="comment">//services.gradle.org/distributions/gradle-3.5-all.zip </span> <i class="conum" data-value="1"></i><b>(1)</b></code></pre>
+<pre class="CodeRay highlight"><code data-lang="bash">./gradlew wrapper --gradle-version 5.0</code></pre>
 </div>
-</div>
-<div class="colist arabic">
-<table>
-<tr>
-<td><i class="conum" data-value="1"></i><b>1</b></td>
-<td>Gradle version 3.5</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>to:</p>
-</div>
-<div class="listingblock">
-<div class="title">gradle/wrapper/gradle-wrapper.properties</div>
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="groovy"><span class="error">#</span>Wed Sep <span class="octal">06</span> <span class="integer">18</span>:<span class="integer">32</span>:<span class="integer">41</span> CEST <span class="integer">2017</span>
-distributionBase=GRADLE_USER_HOME
-distributionPath=wrapper/dists
-zipStoreBase=GRADLE_USER_HOME
-zipStorePath=wrapper/dists
-distributionUrl=https<span class="error">\</span>:<span class="comment">//services.gradle.org/distributions/gradle-5.0-all.zip </span> <i class="conum" data-value="1"></i><b>(1)</b></code></pre>
-</div>
-</div>
-<div class="colist arabic">
-<table>
-<tr>
-<td><i class="conum" data-value="1"></i><b>1</b></td>
-<td>Gradle version 5.0</td>
-</tr>
-</table>
 </div>
 <div class="paragraph">
 <p>If you customized your app&#8217;s build, other migrations may be necessary. Please check
