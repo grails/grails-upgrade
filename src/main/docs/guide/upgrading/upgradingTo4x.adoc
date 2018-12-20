@@ -331,3 +331,10 @@ The next classes, which were deprecated, have been removed in Grails 4. Please, 
 | `org.grails.validation.routines.UrlValidator` | Replaced by newer version of commons-validation
 | `grails.web.JSONBuilder`| `groovy.json.StreamingJsonBuilder`
 |===
+
+## Grails-Java8
+
+For those who have added a dependency on the `grails-java8` plugin, all you should need to do is simply remove the dependency. All of the classes in the plugin have been moved out to their respective projects.
+
+If the configuration option
+
