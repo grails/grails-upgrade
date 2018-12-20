@@ -208,6 +208,39 @@ gormVersion=7.0.0.BUILD-SNAPSHOT
 </div>
 </div>
 <div class="sect2">
+<h3 id="_spring_boot_2_1_actuator">Spring Boot 2.1 Actuator</h3>
+<div class="paragraph">
+<p>Please check the <a href="https://docs.spring.io/spring-boot/docs/current/reference/html/production-ready-endpoints.html">Spring Boot Actuator</a> documentation since it has changed substantially from Spring Boot 1.5 the version Grails 3.x used.</p>
+</div>
+<div class="paragraph">
+<p>If you had configuration such as:</p>
+</div>
+<div class="listingblock">
+<div class="title">grails-app/conf/application.yml - Grails 3.3.x</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="yml"><span class="key">endpoints</span>:
+    <span class="key">enabled</span>: <span class="string"><span class="content">false</span></span>
+    <span class="key">jmx</span>:
+        <span class="key">enabled</span>: <span class="string"><span class="content">true</span></span>
+        <span class="key">unique-names</span>: <span class="string"><span class="content">true</span></span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>replace it with:</p>
+</div>
+<div class="listingblock">
+<div class="title">grails-app/conf/application.yml - Grails 4.x</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="yml"><span class="key">spring</span>:
+    <span class="key">jmx</span>:
+        <span class="key">unique-names</span>: <span class="string"><span class="content">true</span></span>
+<span class="key">management</span>:
+    <span class="key">endpoints</span>:
+        <span class="key">enabled-by-default</span>: <span class="string"><span class="content">false</span></span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
 <h3 id="_spring_boot_gradle_plugin_changes">Spring Boot Gradle Plugin Changes</h3>
 <div class="paragraph">
 <p>Grails 4 is built on top of Spring Boot 2.1. Grails 3 apps were built on top of Spring Boot 1.x.</p>
