@@ -58,6 +58,35 @@ Grails 4.x supports a minimum version of Hibernate 5.3 and GORM 7.x. Several cha
 
 The details of these changes are covered in the http://gorm.grails.org/7.0.x/hibernate/manual/index.html#upgradeNotes[GORM upgrade documentation].
 
+### Spring Boot 2.1 Actuator
+
+Please check the https://docs.spring.io/spring-boot/docs/current/reference/html/production-ready-endpoints.html[Spring Boot Actuator] documentation since it has changed substantially from Spring Boot 1.5 the version Grails 3.x used.
+
+If you had configuration such as:
+
+[source, yml]
+.grails-app/conf/application.yml - Grails 3.3.x
+----
+endpoints:
+    enabled: false
+    jmx:
+        enabled: true
+        unique-names: true
+----
+
+replace it with:
+
+[source, yml]
+.grails-app/conf/application.yml - Grails 4.x
+----
+spring:
+    jmx:
+        unique-names: true
+management:
+    endpoints:
+        enabled-by-default: false
+----
+
 ### Spring Boot Gradle Plugin Changes
 
 Grails 4 is built on top of Spring Boot 2.1. Grails 3 apps were built on top of Spring Boot 1.x.
