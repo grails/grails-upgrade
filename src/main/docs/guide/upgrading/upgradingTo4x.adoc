@@ -87,6 +87,36 @@ management:
         enabled-by-default: false
 ----
 
+### Spring Boot Developer Tools
+
+Grails 4 applications include https://docs.spring.io/spring-boot/docs/current/reference/html/using-boot-devtools.html[Spring Boot Developer Tools] dependencies in the `build.gradle` build script. If you are migrating a Grails 3.x app, please include the next set of dependencies:
+
+[source, groovy]
+.build.gradle
+----
+.
+..
+...
+configurations {
+    developmentOnly
+    runtimeClasspath {
+        extendsFrom developmentOnly
+    }
+}
+
+dependencies {
+	developmentOnly("org.springframework.boot:spring-boot-devtools")
+	...
+	..
+}
+...
+..
+.
+----
+
+You can use Spring Developer Tools in combination with a browser extension such as the https://chrome.google.com/webstore/detail/livereload/jnihajbhpnppcggbcgedagnkighmdlei[Chrome LiveReload extension] to get automatic browser
+refresh when you change anything in your Grails application.
+
 ### Spring Boot Gradle Plugin Changes
 
 Grails 4 is built on top of Spring Boot 2.1. Grails 3 apps were built on top of Spring Boot 1.x.
