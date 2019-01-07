@@ -145,6 +145,31 @@ bootRun {
 }
 ----
 
+
+### Building executable jars for Grails Plugins
+
+https://spring.io/blog/2017/04/05/spring-boot-s-new-gradle-plugin[Spring Boot's new Gradle Plugin]:
+
+> The bootRepackage task has been replaced with bootJar and bootWar tasks for building executable jars and wars respectively. Both tasks extend their equivalent standard Gradle jar or war task, giving you access to all of the usual configuration options and behaviour.
+
+If you had configuration such as:
+
+[source, groovy]
+.buid.gradle | Grails 3
+----
+// enable if you wish to package this plugin as a standalone application
+bootRepackage.enabled = false
+----
+
+replace it with:
+
+[source, groovy]
+.buid.gradle | Grails 4
+----
+// enable if you wish to package this plugin as a standalone application
+bootJar.enabled = false
+----
+
 ### Upgrading to Gradle 5
 
 Grails 3 apps by default used http://gradle.org[Gradle] 3.5. Grails 4 apps use Gradle 5.
