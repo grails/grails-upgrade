@@ -355,6 +355,39 @@ refresh when you change anything in your Grails application.</p>
 </div>
 </div>
 <div class="sect2">
+<h3 id="_building_executable_jars_for_grails_plugins">Building executable jars for Grails Plugins</h3>
+<div class="paragraph">
+<p><a href="https://spring.io/blog/2017/04/05/spring-boot-s-new-gradle-plugin">Spring Boot&#8217;s new Gradle Plugin</a>:</p>
+</div>
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p>The bootRepackage task has been replaced with bootJar and bootWar tasks for building executable jars and wars respectively. Both tasks extend their equivalent standard Gradle jar or war task, giving you access to all of the usual configuration options and behaviour.</p>
+</div>
+</blockquote>
+</div>
+<div class="paragraph">
+<p>If you had configuration such as:</p>
+</div>
+<div class="listingblock">
+<div class="title">buid.gradle | Grails 3</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="comment">// enable if you wish to package this plugin as a standalone application</span>
+bootRepackage.enabled = <span class="predefined-constant">false</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>replace it with:</p>
+</div>
+<div class="listingblock">
+<div class="title">buid.gradle | Grails 4</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="comment">// enable if you wish to package this plugin as a standalone application</span>
+bootJar.enabled = <span class="predefined-constant">false</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
 <h3 id="_upgrading_to_gradle_5">Upgrading to Gradle 5</h3>
 <div class="paragraph">
 <p>Grails 3 apps by default used <a href="http://gradle.org">Gradle</a> 3.5. Grails 4 apps use Gradle 5.</p>
