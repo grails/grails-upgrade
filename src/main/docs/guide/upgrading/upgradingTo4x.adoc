@@ -213,7 +213,36 @@ dependencies {
 }
 ----
 
+### Micronaut HTTP Client
 
+Grails 4 applications are recommended to upgrade to use the Micronaut HTTP Client. The Grails Datastore Rest Client is
+no longer included in the default Grails 4 distribution.
+
+Replace the following configuration:
+
+[source, groovy]
+.build.gradle
+----
+dependencies {
+    testCompile "org.grails:grails-datastore-rest-client"
+}
+----
+
+with:
+[source, groovy]
+.build.gradle
+----
+dependencies {
+    testCompile "io.micronaut:micronaut-http-client"
+}
+----
+
+If the client is used in the application code and not just in testing, change the dependency qualifier to `compile`.
+
+Micronaut HTTP client is a feature rich client implementation that has both a low-level API and a higher level AOP-driven API.
+
+Learn more at https://docs.micronaut.io/latest/guide/index.html#httpClient[Micronaut HTTP Client] and
+https://guides.micronaut.io/micronaut-http-client-groovy/guide/index.html[Micronaut HTTP Client Guide]
 
 ### Migrating to Geb 2.3
 
