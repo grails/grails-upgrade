@@ -436,6 +436,10 @@ bootJar.enabled = <span class="predefined-constant">false</span></code></pre>
 }</code></pre>
 </div>
 </div>
+<div class="paragraph">
+<p>Note Hibernate requires a transaction for all operations, reads included. Grails Controllers do not have <code>@Transactional</code>
+by default. Therefore if code in a Controller uses GORM without a Grails Service, it must be annotated with <code>@Transactional</code>.</p>
+</div>
 </div>
 <div class="sect2">
 <h3 id="_micronaut_http_client">Micronaut HTTP Client</h3>
