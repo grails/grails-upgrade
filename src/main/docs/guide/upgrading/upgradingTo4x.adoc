@@ -213,6 +213,9 @@ dependencies {
 }
 ----
 
+Note Hibernate requires a transaction for all operations, reads included. Grails Controllers do not have `@Transactional`
+by default. Therefore if code in a Controller uses GORM without a Grails Service, it must be annotated with `@Transactional`.
+
 ### Micronaut HTTP Client
 
 Grails 4 applications are recommended to upgrade to use the Micronaut HTTP Client. The Grails Datastore Rest Client is
