@@ -401,6 +401,15 @@ bootJar.enabled = <span class="predefined-constant">false</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
+<p>The command will download an upgraded gradle profile. You will notice changes in the <code>/gradle/wrapper</code> folder as well
+as the <code>gradlew</code> script files after the command completes. Note that Gradle 5.0 requires Java 8 or later to run.</p>
+</div>
+<div class="paragraph">
+<p>If you are upgrading a multi-project build to Gradle 5.0, go to the the top level and run the <code>gradlew</code> upgrade command.
+In order to upgrade the sub-projects, go into the <code>gradle-wrapper.properties</code> and adjust the <code>distributionUrl</code> property
+to download the correct version of the gradlew-x.x-bin.zip, where <code>x.x</code> is the version number.</p>
+</div>
+<div class="paragraph">
 <p>If you customized your app&#8217;s build, other migrations may be necessary. Please check
 <a href="https://docs.gradle.org/current/userguide/upgrading_version_4.html">Gradle Upgrading your build</a> documentation.</p>
 </div>
