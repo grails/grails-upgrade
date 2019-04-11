@@ -181,9 +181,15 @@ To upgrade to Gradle 5 execute:
 ./gradlew wrapper --gradle-version 5.0
 ----
 
+The command will download an upgraded gradle profile. You will notice changes in the `/gradle/wrapper` folder as well
+as the `gradlew` script files after the command completes. Note that Gradle 5.0 requires Java 8 or later to run.
+
+If you are upgrading a multi-project build to Gradle 5.0, go to the the top level and run the `gradlew` upgrade command.
+In order to upgrade the sub-projects, go into the `gradle-wrapper.properties` and adjust the `distributionUrl` property
+to download the correct version of the gradlew-x.x-bin.zip, where `x.x` is the version number.
+
 If you customized your app's build, other migrations may be necessary. Please check
 https://docs.gradle.org/current/userguide/upgrading_version_4.html[Gradle Upgrading your build] documentation.
-
 
 ### Upgrade Hibernate
 
