@@ -159,7 +159,7 @@ grailsVersion=3.3.8
 <div class="title">gradle.properties</div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="properties">...
-grailsVersion=4.0.0.BUILD-SNAPSHOT
+grailsVersion=4.0.0.RC1
 ...</code></pre>
 </div>
 </div>
@@ -353,15 +353,6 @@ bootJar.enabled = <span class="predefined-constant">false</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>The command will download an upgraded gradle profile. You will notice changes in the <code>/gradle/wrapper</code> folder as well
-as the <code>gradlew</code> script files after the command completes. Note that Gradle 5.0 requires Java 8 or later to run.</p>
-</div>
-<div class="paragraph">
-<p>If you are upgrading a multi-project build to Gradle 5.0, go to the the top level and run the <code>gradlew</code> upgrade command.
-In order to upgrade the sub-projects, go into the <code>gradle-wrapper.properties</code> and adjust the <code>distributionUrl</code> property
-to download the correct version of the gradlew-x.x-bin.zip, where <code>x.x</code> is the version number.</p>
-</div>
-<div class="paragraph">
 <p>If you customized your app&#8217;s build, other migrations may be necessary. Please check
 <a href="https://docs.gradle.org/current/userguide/upgrading_version_4.html">Gradle Upgrading your build</a> documentation.</p>
 </div>
@@ -396,49 +387,6 @@ to download the correct version of the gradlew-x.x-bin.zip, where <code>x.x</cod
   compile <span class="string"><span class="delimiter">&quot;</span><span class="content">org.hibernate:hibernate-core:5.3.7.Final</span><span class="delimiter">&quot;</span></span>
 }</code></pre>
 </div>
-</div>
-<div class="paragraph">
-<p>Note Hibernate requires a transaction for all operations, reads included. Grails Controllers do not have <code>@Transactional</code>
-by default. Therefore if code in a Controller uses GORM without a Grails Service, it must be annotated with <code>@Transactional</code>.</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_micronaut_http_client">Micronaut HTTP Client</h3>
-<div class="paragraph">
-<p>Grails 4 applications are recommended to upgrade to use the Micronaut HTTP Client. The Grails Datastore Rest Client is
-no longer included in the default Grails 4 distribution.</p>
-</div>
-<div class="paragraph">
-<p>Replace the following configuration:</p>
-</div>
-<div class="listingblock">
-<div class="title">build.gradle</div>
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="groovy">dependencies {
-    testCompile <span class="string"><span class="delimiter">&quot;</span><span class="content">org.grails:grails-datastore-rest-client</span><span class="delimiter">&quot;</span></span>
-}</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>with:</p>
-</div>
-<div class="listingblock">
-<div class="title">build.gradle</div>
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="groovy">dependencies {
-    testCompile <span class="string"><span class="delimiter">&quot;</span><span class="content">io.micronaut:micronaut-http-client</span><span class="delimiter">&quot;</span></span>
-}</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>If the client is used in the application code and not just in testing, change the dependency qualifier to <code>compile</code>.</p>
-</div>
-<div class="paragraph">
-<p>Micronaut HTTP client is a feature rich client implementation that has both a low-level API and a higher level AOP-driven API.</p>
-</div>
-<div class="paragraph">
-<p>Learn more at <a href="https://docs.micronaut.io/latest/guide/index.html#httpClient">Micronaut HTTP Client</a> and
-<a href="https://guides.micronaut.io/micronaut-http-client-groovy/guide/index.html">Micronaut HTTP Client Guide</a></p>
 </div>
 </div>
 <div class="sect2">
