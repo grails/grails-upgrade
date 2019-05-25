@@ -242,7 +242,7 @@ buildscript {
     }
     dependencies {
         ...
-        classpath "gradle.plugin.com.energizedwork.webdriver-binaries:webdriver-binaries-gradle-plugin:$webdriverBinariesVersion" // <1>
+        classpath "gradle.plugin.com.github.erdi.webdriver-binaries:webdriver-binaries-gradle-plugin:$webdriverBinariesVersion" // <1>
     }
 }
 ...
@@ -286,12 +286,11 @@ tasks.withType(Test) {
 [source,properties]
 .gradle.properties
 ----
-gebVersion=2.3
-seleniumVersion=3.12.0
-webdriverBinariesVersion=1.4
-hibernateCoreVersion=5.1.5.Final
-chromeDriverVersion=2.44 // <2>
-geckodriverVersion=0.23.0 // <3>
+gebVersion=2.3.1
+seleniumVersion=3.14.0
+webdriverBinariesVersion=2.1
+chromeDriverVersion=2.46.0 // <2>
+geckodriverVersion=0.24.0 // <3>
 seleniumSafariDriverVersion=3.14.0
 ----
 
